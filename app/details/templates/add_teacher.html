@@ -1,0 +1,70 @@
+{% extends './main.html' %}
+{% load crispy_forms_tags %}
+{% block content %} 
+    <h1>Our Teachers</h1>
+
+        <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        ADD TEACHER
+    </button>
+
+        <!--
+        <a href="{% url 'teacher_pdf_page' %}">
+            <button class="btn btn-info">Download PDF</button>
+        </a>-->
+                    
+        <table class="table table-striped">
+            <thead>
+                <th scope="col">Teacher id</th>
+                <th scope="col">Teacher Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Address</th>
+                <th scope="col">Contact</th>
+            </thead>
+            <tbody>
+                {% for teacher in teachers %}
+                    <tr>
+                        <th scope="row">{{teacher.id}}</th>
+                        <td>{{teacher.Teacher_name}}</td>
+                        <td>{{teacher.Gender}}</td>
+                        <td>{{teacher.Address}}</td>
+                        <td>{{teacher.Contact}}</td> 
+                        <td><a href="{% url 'edit_teacher_page' teacher.id %}">
+                                <i class="material-icons">edit</i>
+                            </a> |
+                            <a href="{% url 'delete_teacher_page' teacher.id %}"
+                                onclick="return confirm('Press OK to delete this Teacher')">
+                                <i class="material-icons">delete_sweep</i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    <button class="btn btn-success"><a href="{% url 'home_page' %}">Home</a></button>
+
+    <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add new Teacher</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form method="POST">
+                {% csrf_token %}
+                {{form|crispy}}
+                <button class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

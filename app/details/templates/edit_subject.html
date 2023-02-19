@@ -1,0 +1,14 @@
+{% extends './main.html' %}
+{% load crispy_forms_tags %}
+{% block content %} 
+    <h1>Edit - {{subjects.Subject_name}} Details</h1>
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            {{form|crispy}}
+
+            <input type="Submit" class="btn btn-primary">
+            <button class="btn btn-warning"><a href="{% url 'add_subject_page' %}">Cancel</a></button>
+        </form>
+    </div>
+{% endblock content %}

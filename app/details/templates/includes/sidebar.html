@@ -1,0 +1,47 @@
+
+
+<div class="sidebar" data-color="purple" data-background-color="white" data-image="/static/assets/img/sidebar-1.jpg">
+  <div class="logo">
+    <a target="_blank" rel="noopener noreferrer" 
+        href="{% url 'home_page' %}" class="simple-text logo-normal">Noor <br> International School
+    </a>
+  </div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      {% if user.is_authenticated %}
+          <li class="nav-item">
+              <a class="nav-link active" href="{% url 'add_student_page' %}">Students
+                <i class="material-icons">api</i>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'add_teacher_page' %}">Teachers
+                <i class="material-icons">bubble_chart</i>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'add_subject_page' %}">Subjects
+                <i class="material-icons">library_books</i>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link disabled" href="{% url 'add_class_page' %}">Classes
+                <i class="material-icons">dashboard</i>
+              </a>
+          </li>
+          <li class="material-icons "  ></li>
+              <a class="nav-link active  list-group-item-danger"  href="{% url 'logout' %}">Logout
+                <i class="material-icons ">directions_run</i>
+              </a>
+          </li>
+      {% else %}
+          <li class="nav-item active">
+              <a class="nav-link" href="{% url 'sign_up_page' %}">Sign Up</a>
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link" href="{% url 'login' %}">Log In</a>
+          </li> 
+      {% endif %}
+    </ul>
+  </div>
+</div>

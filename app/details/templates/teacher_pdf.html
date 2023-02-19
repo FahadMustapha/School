@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Download Pdf</title>
+</head>
+<body>
+    <h3><center>Teachers' List</center></h3>
+    <table class="table table-striped">
+        <thead>
+            <th scope="col">Teacher id</th>
+            <th scope="col">Teacher Name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Address</th>
+            <th scope="col">Contact</th>
+        </thead>
+        <tbody>
+            {% for teacher in teachers %}
+                <tr>
+                    <th scope="row">{{teacher.id}}</th>
+                    <td>{{teacher.Teacher_name}}</td>
+                    <td>{{teacher.Gender}}</td>
+                    <td>{{teacher.Address}}</td>
+                    <td>{{teacher.Contact}}</td> 
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Details</title>
+</head>
+<body>
+    <table class="table table-striped">
+        <thead>
+            <th scope="col">Class id</th>
+            <th scope="col">Class Name</th>
+            <th scope="col">Class Teacher</th>
+            <th scope="col">Class Fees</th>
+        </thead>
+        <tbody>
+            {% for class in class %}
+                <tr>
+                    <th scope="row">{{class.id}}</th>
+                    <td>{{class.Class_name}}</td>
+                    <td>{{class.Class_Teacher}}</td>
+                    <td>{{class.Class_fees}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
